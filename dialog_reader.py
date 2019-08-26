@@ -3,7 +3,6 @@
 -------------------------------------------------
    File Name：     issue_reader_siamese
    Description :
-   Author :       xmz
    date：          2019/7/28
 -------------------------------------------------
 """
@@ -62,7 +61,6 @@ def replace_tokens(content):
     content = re.sub(r"'''.*'''", "CODE ", content)
     content = re.sub(r'<[^>]*>|<\/[^>]*>', 'HTML ', content)
     content = re.sub(r'-\s\[\s*x?\s*\]\s((feature\srequest)|(bug\sreport)|other)', '', content)
-    # content = re.sub(r"(morning)|(hi)|(hello)|([^a-zA-Z]hey)", "", content)
     return content
 
 
@@ -180,23 +178,6 @@ class IssueReaderSiamese(DatasetReader):
                     diff_num += 1
             logger.info(f"Dataset Count: Same : {same_num} / Diff : {diff_num}")
 
-        # else:
-        #     logger.info("Begin training-------")
-        #     iter_num = 10
-        #     if "test" in file_path:
-        #         iter_num = 1
-        #     for _ in range(iter_num * len(all_data)):
-        #         threshold = random.uniform(0, 1)
-        #         if threshold <= 0.5:
-        #             yield self.text_to_instance(random.sample(features, 2))
-        #             yield self.text_to_instance(random.sample(others, 2))
-        #             same_num += 2
-        #         else:
-        #             yield self.text_to_instance((random.choice(features), random.choice(others)))
-        #             yield self.text_to_instance((random.choice(others), random.choice(features)))
-        #             diff_num += 2
-        # for p in permutations(all_data, 2):
-        #     yield self.text_to_instance(p)
 
     @overrides
     def text_to_instance(self, p, is_gold=False) -> Instance:  # type: ignore
@@ -206,25 +187,15 @@ class IssueReaderSiamese(DatasetReader):
                                       self._token_indexers)
                             for line in ins1[1]])
         fields['dialog1'] = dialog
-        # fields['users1'] = SequenceLabelField([line[0] for line in ins1[1]], dialog, label_namespace="user")
         fields["pos_tags1"] = ListField([SequenceLabelField([word.tag_ for word in self._tokenizer.tokenize(line[1])],
                                                             tokens, label_namespace="pos")
                                          for line, tokens in zip(ins1[1], dialog)])
-        # dialog = ListField([TextField([word for word in self._tokenizer.tokenize(line[1])],
-        #                               self._token_indexers)
-        #                     for line in ins2[1]])
-        # fields['dialog2'] = dialog
-        # fields['users2'] = SequenceLabelField([line[0] for line in ins2[1]], dialog, label_namespace="user")
-        # fields["pos_tags2"] = ListField([SequenceLabelField([word.tag_ for word in self._tokenizer.tokenize(line[1])],
-        #                                                     tokens, label_namespace="pos")
-        #                                  for line, tokens in zip(ins2[1], dialog)])
         if ins1[-1] is not None and ins2[-1] is not None:
             if ins1[-1] == ins2[-1]:
                 fields['label'] = LabelField("same")
             else:
                 fields['label'] = LabelField("diff")
             fields['label_tags'] = LabelField("@".join([ins1[-1], ins2[-1]]), label_namespace="label_tags")
-        # plain label
         fields['label'] = LabelField(ins1[-1])
         fields['metadata'] = MetadataField({"is_gold": is_gold, "pair_instance": p})
 

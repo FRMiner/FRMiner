@@ -3,7 +3,6 @@
 -------------------------------------------------
    File Name：     dialog_model
    Description :
-   Author :       xmz
    date：          2019/7/9
 -------------------------------------------------
 """
@@ -65,13 +64,8 @@ class ContrastiveLoss(nn.Module):
 
     def forward(self, output1, output2, target, size_average=True):
         distances = self.distance(output1, output2)
-        # losses = 0.5 * (target.float() * distances +
-        #                 (1 + -1 * target).float() * nn.functional.relu(self.margin - (distances + self.eps).sqrt()).pow(
-        #         #             2))
-        print(distances)
         losses = (1 - target.float()) * nn.functional.relu((self.margin - distances)).pow(2) \
                  + target.float() * (1 - distances).pow(2) / 4
-        # return self.mse(distances, target), distances
         return losses.mean() if size_average else losses.sum(), distances
 
 
@@ -105,10 +99,8 @@ class FRModel(Model):
                       batch_first=True,
                       bidirectional=True)
         self._encoder = PytorchSeq2SeqWrapper(rnn)
-        # self._encoder = MultiHeadSelfAttention(4, 100, 100, 100)
         self._seq2vec = CnnEncoder(self._encoder.get_output_dim(), 25)
         self._num_class = self.vocab.get_vocab_size(self._label_namespace)
-        # self._same_class_idx = self.vocab.get_token_index("same", "labels")
         self._bilinear_sim = BilinearSimilarity(self._encoder.get_output_dim(), self._encoder.get_output_dim())
         self._projector = FeedForward(self._seq2vec.get_output_dim(), 2,
                                       [50, self._num_class],
@@ -119,9 +111,7 @@ class FRModel(Model):
         self._metrics = {
             "accuracy": CategoricalAccuracy(),
             "f-measure": F1Measure(positive_label=vocab.get_token_index("feature", "labels")),
-            # "pearson": PearsonCorrelation()
         }
-        # self._siamese_metirc = SiameseMeasure(self.vocab)
         self._loss = torch.nn.CrossEntropyLoss()
         self._contrastive_loss = ContrastiveLoss()
         self._mse_loss = torch.nn.MSELoss()
@@ -160,12 +150,9 @@ class FRModel(Model):
         rnn_out = pad_sequence2len(rnn_out, 1, 5)
         dialog_mask = pad_sequence2len(dialog_mask, -1, 5)
         rnn2vec = self._seq2vec(rnn_out, dialog_mask)
-        # rnn2vec = get_final_encoder_states(rnn_out, dialog_mask, bidirectional=True)
         return rnn2vec
 
     def forward_gold_instances(self, d_id, dialog, user, pos_tag, label_tags):
-        # if label_tags[0] == self.vocab.get_token_index("other@other", "label_tags"):
-        #     return
         if self._golden_instances is None:
             self._golden_instances = torch.tensor(self._instance_forward(dialog, user, pos_tag))
         else:
@@ -203,26 +190,16 @@ class FRModel(Model):
             output_dict['logits'] = logits
 
         else:
-            # rnn_vec2 = self._instance_forward(dialog2, users2, pos_tags2)
             logits = self._projector(rnn_vec1)
             probs = nn.functional.softmax(logits, dim=-1)
             output_dict["logits"] = logits
             output_dict["probs"] = probs
             if label is not None:
                 loss = self._loss(logits, label)
-                # closs, distance = self._contrastive_loss(rnn_vec1, rnn_vec2, torch.eq(label, torch.empty(label.size(),
-                #                                                                                          dtype=torch.long,
-                #                                                                                          device=label.device).fill_(
-                #     self._same_class_idx)).float())
-                # distance = self.exponent_neg_manhattan_distance(rnn_vec1, rnn_vec2)
-                # loss = self._mse_loss(distance, label)
-                # print(closs, distance)
                 output_dict['loss'] = loss
                 output_dict['label_tags'] = label_tags
                 for metric_name, metric in self._metrics.items():
                     metric(logits, label)
-                    # metric(torch.ge(distance, 0.5).float(), label.float())
-                # self._siamese_metirc(logits, label_tags)
         return output_dict
 
     def inference(self, predictions, label_tags, d_id):
@@ -259,7 +236,6 @@ class FRModel(Model):
                     predict_labels.append(0)
                 elif golden_name == "other":
                     predict_labels.append(1 / 261)
-                    # neg_ins.append(d_id)
         # TODO return gold_id
         return pos_ins + neg_ins, predict_labels
 
@@ -293,8 +269,6 @@ class FRModel(Model):
             else:
                 is_feature.append("")
                 output_dict["vote"].append(0)
-            # output_dict["vote"] = np.sum(predict_labels[:, 0], axis=0)
-            # predict_labels = output_dict["vote"] > 0
         else:
             _, _ = self.inference(output_dict['probs'], output_dict) > 0
 
@@ -316,9 +290,4 @@ class FRModel(Model):
         metrics['precision'] = precision
         metrics['recall'] = recall
         metrics['fscore'] = fscore
-        # metrics['pearson'] = self._metrics['pearson'].get_metric(reset)
-        # s_precision, s_recall, s_fmeasure = self._siamese_metirc.get_metric(reset)
-        # metrics['s_precision'] = s_precision
-        # metrics['s_recall'] = s_recall
-        # metrics['s_fmeasure'] = s_fmeasure
         return metrics

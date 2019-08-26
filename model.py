@@ -64,13 +64,8 @@ class ContrastiveLoss(nn.Module):
 
     def forward(self, output1, output2, target, size_average=True):
         distances = self.distance(output1, output2)
-        # losses = 0.5 * (target.float() * distances +
-        #                 (1 + -1 * target).float() * nn.functional.relu(self.margin - (distances + self.eps).sqrt()).pow(
-        #         #             2))
-        print(distances)
         losses = (1 - target.float()) * nn.functional.relu((self.margin - distances)).pow(2) \
                  + target.float() * (1 - distances).pow(2) / 4
-        # return self.mse(distances, target), distances
         return losses.mean() if size_average else losses.sum(), distances
 
 
@@ -215,7 +210,6 @@ class FRModel(Model):
                 #     self._same_class_idx)).float())
                 # distance = self.exponent_neg_manhattan_distance(rnn_vec1, rnn_vec2)
                 # loss = self._mse_loss(distance, label)
-                # print(closs, distance)
                 output_dict['loss'] = loss
                 output_dict['label_tags'] = label_tags
                 for metric_name, metric in self._metrics.items():

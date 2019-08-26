@@ -3,7 +3,6 @@
 -------------------------------------------------
    File Name：     issue_reader_siamese
    Description :
-   Author :       xmz
    date：          2019/7/28
 -------------------------------------------------
 """
@@ -62,7 +61,6 @@ def replace_tokens(content):
     content = re.sub(r"'''.*'''", "CODE ", content)
     content = re.sub(r'<[^>]*>|<\/[^>]*>', 'HTML ', content)
     content = re.sub(r'-\s\[\s*x?\s*\]\s((feature\srequest)|(bug\sreport)|other)', '', content)
-    # content = re.sub(r"(morning)|(hi)|(hello)|([^a-zA-Z]hey)", "", content)
     return content
 
 

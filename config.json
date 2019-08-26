@@ -1,0 +1,55 @@
+{
+  "dataset_reader": {
+    "type": "issue_reader_siamese"
+  },
+  "train_data_path": "frmodel/data/bootstrap_target_train_0.txt",
+  "validation_data_path": "frmodel/data/bootstrap_target_test_0.txt",
+  //  "evaluate_on_test": true,
+  "random_seed": 2019,
+  "numpy_seed": 2019,
+  "pytorch_seed": 2019,
+  "model": {
+    "type": "FRModel",
+    "text_field_embedder": {
+      "tokens": {
+        "type": "embedding",
+        "embedding_dim": 50,
+        "trainable": true,
+        "pretrained_file": "frmodel/data/glove.6B.50d.txt"
+      }
+    },
+    "pos_tag_embedding": {
+      "embedding_dim": 50,
+      "vocab_namespace": "pos",
+      "sparse": true
+    },
+//    "users_embedding": {
+//      "embedding_dim": 50,
+//      "vocab_namespace": "user",
+//      "sparse": true
+//    }
+  },
+  "iterator": {
+    "type": "bucket",
+    "batch_size": 32,
+    "sorting_keys": [
+      [
+        "dialog1",
+        "num_fields"
+      ]
+    ]
+  },
+  "trainer": {
+    "optimizer": {
+      "type": "dense_sparse_adam",
+      "betas": [
+        0.9,
+        0.9
+      ]
+    },
+    "validation_metric": "+s_fmeasure",
+    "num_epochs": 100,
+    "patience": 10,
+    "cuda_device": 0
+  }
+}

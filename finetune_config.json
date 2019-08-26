@@ -1,0 +1,35 @@
+// allennlp fine-tune -m out/siamese_bi/ -c FRMiner/finetune_config.json -s out/siamese_ft --extend-vocab --embedding-sources-mapping='{"_text_field_embedder.token_embedder_tokens":"FRMiner/data/glove.6B.50d.txt"}' --include-package=FRMiner
+{
+  "dataset_reader": {
+    "type": "issue_reader_siamese"
+  },
+  "train_data_path": "frmodel/data/angular_target_train.txt",
+  "validation_data_path": "frmodel/data/angular_target_test.txt",
+//  "evaluate_on_test": true,
+  "random_seed": 2019,
+  "numpy_seed": 2019,
+  "pytorch_seed": 2019,
+  "iterator": {
+    "type": "bucket",
+    "batch_size": 32,
+    "sorting_keys": [
+      [
+        "dialog1",
+        "num_fields"
+      ]
+    ]
+  },
+  "trainer": {
+    "optimizer": {
+      "type": "adam",
+      "lr": 1e-4,
+      "parameter_groups" : [
+        [[".*_projector.*"], {"lr": 7e-5}]
+      ]
+    },
+    "validation_metric": "+s_fmeasure",
+    "num_epochs": 80,
+    "patience": 10,
+    "cuda_device": 0
+  }
+}

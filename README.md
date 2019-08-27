@@ -7,15 +7,20 @@
 
 
 ### File organization
-- `config.json`: a json file including settings
-- `finetune_config.json`: a json file for fine-tuning
-- `dialog_reader.py`: dataset reader for plain FRMiner
-- `dialog_model.py`: plain FRMiner model
-- `dialog_reader_siamese.py`: dataset reader for Siamese FRMiner
-- `model.py`: Siamese model
-- `preprocess.py`: dataset preprocess and split
-- `siamese_metric.py`: metric for Siamese FRMiner
-- `util.py`: some util functions
+- `data/`
+    - `origin_data\`: original dialogues data 
+    - `*_feature.txt\`: converted feature dialogues
+    - `*_other.txt`: converted non-feature dialogues
+- `src/`
+    - `config.json`: a json file including settings
+    - `finetune_config.json`: a json file for fine-tuning
+    - `p_frminer_reader.py`: dataset reader for p-FRMiner
+    - `p_frminer_model.py`: p-FRMiner model
+    - `frminer_reader.py`: dataset reader for FRMiner
+    - `frminer_model.py`: FRMiner model
+    - `preprocess.py`: dataset preprocess and split
+    - `siamese_metric.py`: metric for FRMiner
+    - `util.py`: some util functions
 
 
 ### Configuration

@@ -2,8 +2,8 @@
   "dataset_reader": {
     "type": "issue_reader_siamese"
   },
-  "train_data_path": "frmodel/data/bootstrap_target_train_0.txt",
-  "validation_data_path": "frmodel/data/bootstrap_target_test_0.txt",
+  "train_data_path": "FPMiner/data/bootstrap_target_train_0.txt",
+  "validation_data_path": "FRMiner/data/bootstrap_target_test_0.txt",
   //  "evaluate_on_test": true,
   "random_seed": 2019,
   "numpy_seed": 2019,
@@ -15,7 +15,7 @@
         "type": "embedding",
         "embedding_dim": 50,
         "trainable": true,
-        "pretrained_file": "frmodel/data/glove.6B.50d.txt"
+        "pretrained_file": "FRMiner/data/glove.6B.50d.txt"
       }
     },
     "pos_tag_embedding": {

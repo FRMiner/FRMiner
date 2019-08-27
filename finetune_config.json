@@ -1,4 +1,4 @@
-// allennlp fine-tune -m out/siamese_bi/ -c FRMiner/finetune_config.json -s out/siamese_ft --extend-vocab --embedding-sources-mapping='{"_text_field_embedder.token_embedder_tokens":"FRMiner/data/glove.6B.50d.txt"}' --include-package=FRMiner
+// allennlp fine-tune -m out/siamese_bi/ -c frmodel/finetune_config.json -s out/siamese_ft --extend-vocab --embedding-sources-mapping='{"_text_field_embedder.token_embedder_tokens":"frmodel/data/glove.6B.50d.txt"}' --include-package=frmodel
 {
   "dataset_reader": {
     "type": "issue_reader_siamese"

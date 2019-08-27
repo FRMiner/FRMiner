@@ -152,7 +152,7 @@ class IssueReaderSiamese(DatasetReader):
         diff_num = 0
         if "unlabel" in file_path:
             logger.info("Begin predict------")
-            features, others = self.read_dataset("FRMiner/data/{}_target_train.txt")
+            features, others = self.read_dataset("frmodel/data/{}_target_train.txt")
             for sample in features + others:
                 yield self.text_to_instance((sample, sample), is_gold=True)
             for sample in all_data:
@@ -163,7 +163,7 @@ class IssueReaderSiamese(DatasetReader):
             iter_num = 300
             if "test" in file_path:
                 features, others = self.read_dataset(re.sub("test", "train", file_path))
-                # features, others = self.read_dataset("FRMiner/data/ag_ch_cross_train.txt")
+                # features, others = self.read_dataset("frmodel/data/ag_ch_cross_train.txt")
                 iter_num = 1
             for _ in range(iter_num):
                 for sample in all_data:

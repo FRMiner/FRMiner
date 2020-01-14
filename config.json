@@ -2,7 +2,7 @@
   "dataset_reader": {
     "type": "issue_reader_siamese"
   },
-  "train_data_path": "FPMiner/data/bootstrap_target_train_0.txt",
+  "train_data_path": "FRMiner/data/bootstrap_target_train_0.txt",
   "validation_data_path": "FRMiner/data/bootstrap_target_test_0.txt",
   //  "evaluate_on_test": true,
   "random_seed": 2019,

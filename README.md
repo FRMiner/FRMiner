@@ -1,16 +1,16 @@
 # FRMiner
 
 ### Requirements
-- [AllenNLP](https://github.com/allenai/allennlp)
-- [PyTorch](https://github.com/pytorch/pytorch)
-- [SpaCy](https://spacy.io/)
+- Please check the [installation guide](INSTALL.md) to configure your environment
+
 
 
 ### File organization
 - `data/`
-    - `origin_data\`: original dialogues data 
-    - `*_feature.txt\`: converted feature dialogues
+    - `origin_data/`: original dialogues data 
+    - `*_feature.txt`: converted feature dialogues
     - `*_other.txt`: converted non-feature dialogues
+    - `glove.6B.50d.txt`: Pretrained word2vec file, you need download at [Glove](https://nlp.stanford.edu/projects/glove/)
 - `src/`
     - `config.json`: a json file including settings
     - `finetune_config.json`: a json file for fine-tuning
@@ -23,7 +23,7 @@
     - `util.py`: some util functions
 
 
-### Configuration
+### Parameters Configuration
 `config.json` is the config file. Some key json fields in config file are specified as follows：
 
 ```json
@@ -34,6 +34,10 @@
 "cuda_device": training with CPU or GPU
 ```
 
-### Train
+### Train & Test
 
-``allennlp train <config file> -s <serialization path> -f --include-package FRMiner``
+Open terminal in the parent folder which is the same directory level as `FRMiner` and run
+``allennlp train <config file> -s <serialization path> -f --include-package FRMiner``.
+
+For example, with `allennlp train FRMiner/config.json -s FRMiner/out/ -f --include-package FRMiner`, you can get
+the output folder at `FRMiner/out` and log info showed on the console.

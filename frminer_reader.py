@@ -51,7 +51,6 @@ angular_template_split_pre = ["Please check if the PR fulfills these requirement
 angular_template_split_post = ["What is the current behavior? (You can also link to an open issue here)"]
 
 
-# TODO delete "morning hi hello hey"
 def replace_tokens(content):
     content = re.sub(r"\*\*I'm submitting a.+?\\r\\n\\r\\n\*\*", "", content)
     content = re.sub(r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+', 'URL ', content)
@@ -160,7 +159,7 @@ class IssueReaderSiamese(DatasetReader):
             logger.info(f"Predict sample num is {len(all_data)}")
         else:
             logger.info("Begin training-------")
-            iter_num = 300
+            iter_num = 30
             if "test" in file_path:
                 features, others = self.read_dataset(re.sub("test", "train", file_path))
                 # features, others = self.read_dataset("frmodel/data/ag_ch_cross_train.txt")

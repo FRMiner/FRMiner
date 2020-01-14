@@ -10,7 +10,7 @@
     - `origin_data/`: original dialogues data 
     - `*_feature.txt`: converted feature dialogues
     - `*_other.txt`: converted non-feature dialogues
-    - `glove.6B.50d.txt`: Pretrained word2vec file, and you need to download this file at [Glove](https://nlp.stanford.edu/projects/glove/)
+    - `glove.6B.50d.txt`: Pretrained word2vec file, and you need to download this file at [Glove](https://nlp.stanford.edu/projects/glove/), then put it into the folder
 - `src/`
     - `config.json`: a json file including settings
     - `finetune_config.json`: a json file for fine-tuning
@@ -41,3 +41,6 @@ Open terminal in the parent folder which is the same directory level as `FRMiner
 
 For example, with `allennlp train FRMiner/config.json -s FRMiner/out/ -f --include-package FRMiner`, you can get
 the output folder at `FRMiner/out` and log info showed on the console.
+
+At the end of running process, the console outputs the final result for train and test with json format. The picture below is an output example:
+

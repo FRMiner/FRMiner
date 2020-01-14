@@ -10,7 +10,7 @@
     - `origin_data/`: original dialogues data 
     - `*_feature.txt`: converted feature dialogues
     - `*_other.txt`: converted non-feature dialogues
-    - `glove.6B.50d.txt`: Pretrained word2vec file, you need download at [Glove](https://nlp.stanford.edu/projects/glove/)
+    - `glove.6B.50d.txt`: Pretrained word2vec file, and you need to download this file at [Glove](https://nlp.stanford.edu/projects/glove/)
 - `src/`
     - `config.json`: a json file including settings
     - `finetune_config.json`: a json file for fine-tuning

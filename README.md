@@ -1,8 +1,15 @@
 # FRMiner
 
+### Repository Description
+This is the code for `Detection of Hidden Feature Requests from Massive Chat Messages via Deep Siamese Network`(FRMiner). 
+FRMiner identifies feature request dialog from massive chat log with a pair-wise network structure which can benefit the requirement 
+gathering process significantly.
+We release the code and annotated data to help you to reproduce our model and conduct further research.
+
+
+
 ### Requirements
 - Please check the [installation guide](INSTALL.md) to configure your environment
-
 
 
 ### File organization

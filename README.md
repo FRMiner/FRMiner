@@ -42,6 +42,4 @@ Open terminal in the parent folder which is the same directory level as `FRMiner
 For example, with `allennlp train FRMiner/config.json -s FRMiner/out/ -f --include-package FRMiner`, you can get
 the output folder at `FRMiner/out` and log info showed on the console.
 
-At the end of running process, the console outputs the final result for train and test with json format. The picture below is an output example:
-
-![Example](Selection_022.png)
+At the end of running process, the console outputs the final metric result for train and test with json format.

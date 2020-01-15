@@ -4,7 +4,7 @@
 This is the code for `Detection of Hidden Feature Requests from Massive Chat Messages via Deep Siamese Network`(FRMiner). 
 
 
-FRMiner identifies feature request dialog from massive chat log with a pair-wise network structure and can benefit the requirement 
+FRMiner identifies feature request dialog from massive chat log with a pair-wise network structure which can improve the requirement 
 gathering process significantly.
 
 

@@ -1,4 +1,4 @@
-## This is installation instruction.
+## This is the installation instruction for FRMiner.
 
 ### Requirments:
 1. OS: Ubuntu 16.04
@@ -23,7 +23,7 @@
 
     you can install these python packages above via command `pip install <package name>==<package version>`
 
-    And if the console print `Successfully installed <package name>`, it means that you have installed the python
+    And if the console print `Successfully installed <package name>`, it means that you have installed these python
     packages successfully.
      
      

@@ -262,4 +262,4 @@ xmz@itechs-HP-Pavilion:~/projects$ allennlp train FRMiner/config.json -s FRMiner
 
 ```
 
-the log showed above means that the running environment have been configured successfully, and the code is running.
+the log showed above means that the required environment have been configured successfully, and the code is running.

@@ -1,4 +1,6 @@
 ## This is the contact information of authors:
+
+### Authors list
 - Lin Shi 
 
     shilin0616@hotmail.com
@@ -25,4 +27,5 @@
     
     
     
-Github ID : FRMiner
+###Github ID
+    FRMiner

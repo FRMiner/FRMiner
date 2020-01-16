@@ -16,7 +16,7 @@ We release the code and annotated data to help you to reproduce our model and co
 
 
 ### Requirements
-- Please check the [installation guide](INSTALL.md) to configure your environment
+- Please check the [installation guide](./INSTALL.md) to configure your environment
 
 
 ### File organization

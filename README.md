@@ -45,6 +45,8 @@ We release the code and annotated data to help you to reproduce our model and co
 "validation_data_path": test file path
 "text_field_embedder": word embedding, including pre-trained file and dimension of embedding 
 "pos_tag_embedding": pos-tag embedding
+"optimizer": optimizer, we use Adam here
+"num_epochs": training epochs
 "cuda_device": training with CPU or GPU
 ```
 

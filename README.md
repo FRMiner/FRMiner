@@ -1,7 +1,7 @@
 # FRMiner
 
 ### Project Archive
-This project is archived in [https://archive.softwareheritage.org/browse/origin/https://github.com/FRMiner/FRMiner/directory/]().
+This project is archived in [https://archive.softwareheritage.org/browse/origin/https://github.com/FRMiner/FRMiner/directory/](https://archive.softwareheritage.org/browse/origin/https://github.com/FRMiner/FRMiner/directory/).
 
 ### Project Description
 This is the code for `Detection of Hidden Feature Requests from Massive Chat Messages via Deep Siamese Network`(FRMiner). 

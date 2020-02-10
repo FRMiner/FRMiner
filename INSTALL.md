@@ -1,9 +1,9 @@
 ## This is the installation instruction for FRMiner.
 
-### Requirments:
-1. OS: Ubuntu 16.04
+### Requirements:
+1. OS: Ubuntu
 
-2. Coding language: Python (v3.6.3)
+2. Coding language: Python (v3.6)
 
 3. CUDA: 9.0
 
@@ -12,25 +12,28 @@
 4. Python packages:
 
 - Allennlp (v0.8.4)
-- loguru (v0.2.5)
-- numpy (v1.16.1)
-- spacy (v2.0.18)
-- tensorboard (v1.14.0)
-- tensorboardX (v1.7)
-- tensorflow (v1.14.0)     
-- torch (v1.1.0)
-- tqdm (v4.31.1)
-
-    you can install these python packages above via command `pip install <package name>==<package version>`
+    
+    You only need to install `allennlp` via command `pip install allennlp==0.8.4`.
+    
+    Some extra python packages including `spacy`, `torch`, `tensorflow` etc. will be automatically installed 
+    since these packages are dependencies of `allennlp`.
 
     And if the console print `Successfully installed <package name>`, it means that you have installed these python
     packages successfully.
+    
+    Note that if some errors like `ERROR: No matching distribution found for allennlp==0.8.4` occur, 
+    please add a third-party pip mirror resource via `pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple`,
+    after that, reinstall your `allennlp`.
      
      
 5. Run
 
     Open terminal in the parent folder which is the same directory level as `FRMiner` and run
     ``allennlp train <config file> -s <serialization path> -f --include-package FRMiner``.
+    
+    If you are running the code for the first time, the code will automatically download a NLP model `en-core-web-sm`, 
+    it takes some time and you do not need to download it later.
+    ！[](Screenshot1.png)
     
     For example, with `allennlp train FRMiner/config.json -s FRMiner/out/ -f --include-package FRMiner`,
     you can get the following information on your console:
@@ -263,3 +266,6 @@
     ```
     
     the log showed above means that the required environment have been configured successfully, and the code is running.
+    
+    This training process will take a long time which depends on the performance of your machine, if you just want to test
+    the function of the code or get a initial trained model, you can set the `num_epochs` field in `config.json` as a small integer number.

@@ -27,7 +27,7 @@
 5.  Code and Data：
 
     Code is archived in [softwareheritage](https://archive.softwareheritage.org/browse/origin/https://github.com/FRMiner/FRMiner/directory/).
-    After acquiring the code, you need to download [Glove](http://nlp.stanford.edu/data/glove.6B.zip), then unzip this file and put `glove.6B.50d.txt`
+    After acquiring the code, the next step is to download [Glove](http://nlp.stanford.edu/data/glove.6B.zip), then unzip this file and put `glove.6B.50d.txt`
     into `data` folder.
 
      
@@ -36,12 +36,12 @@
     Open terminal in the parent folder which is the same directory level as `FRMiner` and run
     ``allennlp train <config file> -s <serialization path> -f --include-package FRMiner``.
     
-    If you are running the code for the first time, the code will automatically download a NLP model `en-core-web-sm`, 
+    If you are running the code for the first time, the code will automatically download an NLP model `en-core-web-sm`, 
     it takes some time and you do not need to download it later. The following screen shot is the output of downloading 
     the model for the first time. 
     ![](Screenshot1.png)
     
-    If you have downloaded the model before, for example, with `allennlp train FRMiner/config.json -s FRMiner/out/ -f --include-package FRMiner`,
+    But if you have downloaded the `en-core-web-sm` before, for example, with `allennlp train FRMiner/config.json -s FRMiner/out/ -f --include-package FRMiner`,
     you can get the following information on your console:
     
     ```bash

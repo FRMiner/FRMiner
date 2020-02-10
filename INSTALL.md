@@ -25,7 +25,8 @@
         after that, reinstall your `allennlp`.
     
 5.  Code and Data：
-    Code is archived in [https://archive.softwareheritage.org/browse/origin/https://github.com/FRMiner/FRMiner/directory/](https://archive.softwareheritage.org/browse/origin/https://github.com/FRMiner/FRMiner/directory/).
+
+    Code is archived in [softwareheritage](https://archive.softwareheritage.org/browse/origin/https://github.com/FRMiner/FRMiner/directory/).
     After acquiring the code, you need to download [Glove](http://nlp.stanford.edu/data/glove.6B.zip), then unzip this file and put `glove.6B.50d.txt`
     into `data` folder.
 
@@ -36,10 +37,11 @@
     ``allennlp train <config file> -s <serialization path> -f --include-package FRMiner``.
     
     If you are running the code for the first time, the code will automatically download a NLP model `en-core-web-sm`, 
-    it takes some time and you do not need to download it later.
+    it takes some time and you do not need to download it later. The following screen shot is the output of downloading 
+    the model for the first time. 
     ![](Screenshot1.png)
     
-    For example, with `allennlp train FRMiner/config.json -s FRMiner/out/ -f --include-package FRMiner`,
+    If you have downloaded the model before, for example, with `allennlp train FRMiner/config.json -s FRMiner/out/ -f --include-package FRMiner`,
     you can get the following information on your console:
     
     ```bash
@@ -272,4 +274,4 @@
     the log showed above means that the required environment have been configured successfully, and the code is running.
     
     This training process will take a long time which depends on the performance of your machine, if you just want to test
-    the function of the code or get a initial trained model, you can set the `num_epochs` field in `config.json` as a small integer number.
+    the functions of the code or get a initial trained model, you can set the `num_epochs` field in `config.json` as a small integer number.

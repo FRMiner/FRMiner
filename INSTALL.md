@@ -11,29 +11,34 @@
 
 4. Python packages:
 
-- Allennlp (v0.8.4)
+    - Allennlp (v0.8.4)
     
-    You only need to install `allennlp` via command `pip install allennlp==0.8.4`.
+        You only need to install `allennlp` via command `pip install allennlp==0.8.4`.
+        
+        Some extra python packages including `spacy`, `torch`, `tensorflow` etc. will be automatically installed 
+        since these packages are dependencies of `allennlp`.
     
-    Some extra python packages including `spacy`, `torch`, `tensorflow` etc. will be automatically installed 
-    since these packages are dependencies of `allennlp`.
+        And if the console print `Successfully installed <package name>`, it means that you have installed these python
+        packages successfully.
+        
+        Note that if some errors like `ERROR: No matching distribution found for allennlp==0.8.4` occur, 
+        please add a third-party pip mirror resource via `pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple`,
+        after that, reinstall your `allennlp`.
+    
+5.  Code and Data：
+    Code is archived in [https://archive.softwareheritage.org/browse/origin/https://github.com/FRMiner/FRMiner/directory/](https://archive.softwareheritage.org/browse/origin/https://github.com/FRMiner/FRMiner/directory/).
+    After acquiring the code, you need to download [Glove](http://nlp.stanford.edu/data/glove.6B.zip), then unzip this file and put `glove.6B.50d.txt`
+    into `data` folder.
 
-    And if the console print `Successfully installed <package name>`, it means that you have installed these python
-    packages successfully.
-    
-    Note that if some errors like `ERROR: No matching distribution found for allennlp==0.8.4` occur, 
-    please add a third-party pip mirror resource via `pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple`,
-    after that, reinstall your `allennlp`.
      
-     
-5. Run
+6. Run
 
     Open terminal in the parent folder which is the same directory level as `FRMiner` and run
     ``allennlp train <config file> -s <serialization path> -f --include-package FRMiner``.
     
     If you are running the code for the first time, the code will automatically download a NLP model `en-core-web-sm`, 
     it takes some time and you do not need to download it later.
-    ！[](Screenshot1.png)
+    [](Screenshot1.png)
     
     For example, with `allennlp train FRMiner/config.json -s FRMiner/out/ -f --include-package FRMiner`,
     you can get the following information on your console:

@@ -1,6 +1,5 @@
 ## This is the installation instruction for FRMiner.
 
-### Requirements:
 1. OS: Ubuntu
 
 2. Coding language: Python (v3.6)
@@ -38,7 +37,7 @@
     
     If you are running the code for the first time, the code will automatically download a NLP model `en-core-web-sm`, 
     it takes some time and you do not need to download it later.
-    [](Screenshot1.png)
+    ![](Screenshot1.png)
     
     For example, with `allennlp train FRMiner/config.json -s FRMiner/out/ -f --include-package FRMiner`,
     you can get the following information on your console:

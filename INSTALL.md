@@ -274,4 +274,4 @@
     the log showed above means that the required environment have been configured successfully, and the code is running.
     
     This training process will take a long time which depends on the performance of your machine, if you just want to test
-    the functions of the code or get a initial trained model, you can set the `num_epochs` field in `config.json` as a small integer number.
+    the functions of the code or get an initial trained model, you can set the `num_epochs` field in `config.json` as a small integer number.

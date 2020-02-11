@@ -1,7 +1,9 @@
 ## This is the installation instruction for FRMiner.
 
 1. OS: Ubuntu
+
    Memory: minimum 8G
+   
    Hardware: minimum 10G
 
 2. Coding language: Python (v3.6)

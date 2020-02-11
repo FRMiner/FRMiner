@@ -4,7 +4,6 @@
   },
   "train_data_path": "FRMiner/data/bootstrap_target_train_0.txt",
   "validation_data_path": "FRMiner/data/bootstrap_target_test_0.txt",
-  //  "evaluate_on_test": true,
   "random_seed": 2019,
   "numpy_seed": 2019,
   "pytorch_seed": 2019,
@@ -23,11 +22,6 @@
       "vocab_namespace": "pos",
       "sparse": true
     },
-//    "users_embedding": {
-//      "embedding_dim": 50,
-//      "vocab_namespace": "user",
-//      "sparse": true
-//    }
   },
   "iterator": {
     "type": "bucket",
@@ -48,8 +42,8 @@
       ]
     },
     "validation_metric": "+s_fmeasure",
-    "num_epochs": 100,
+    "num_epochs": 10,
     "patience": 10,
-    "cuda_device": 0
+    "cuda_device": -1
   }
 }

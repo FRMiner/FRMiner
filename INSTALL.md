@@ -18,6 +18,9 @@ We provide two kinds of installation approaches, docker and configuring manually
     `allennlp train FRMiner/config.json -s FRMiner/out/ -f --include-package FRMiner`
     
     
+This training process will take a long time which depends on the performance of your machine, if you just want to test the functions of the code or get an initial trained model, you can set the `num_epochs` field in `config.json` as a small integer number.
+    
+    
 ## Configure manually
 
 
@@ -298,5 +301,4 @@ We provide two kinds of installation approaches, docker and configuring manually
     
     the log showed above means that the required environment have been configured successfully, and the code is running.
     
-    This training process will take a long time which depends on the performance of your machine, if you just want to test
-    the functions of the code or get an initial trained model, you can set the `num_epochs` field in `config.json` as a small integer number.
+    

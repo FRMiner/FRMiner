@@ -1,5 +1,25 @@
 ## This is the installation instruction for FRMiner.
 
+We provide two kinds of installation approaches, docker and configuring manually.
+
+
+## Docker
+
+1. install docker following by [Docker tutorial](https://docs.docker.com/install/)
+
+2. pull docker image by `docker pull zzyo/ubuntu:v1` in command
+
+3. enter docker by `docker run -it zzyo/ubuntu:v1 /bin/bash`
+
+4. enter code folder and run:
+    `cd home`
+    
+    `allennlp train FRMiner/config.json -s FRMiner/out/ -f --include-package FRMiner`
+    
+    
+## Configure manually
+
+
 1. OS: Ubuntu
 
    Memory: minimum 8G

@@ -12,6 +12,7 @@ We provide two kinds of installation approaches, docker and configuring manually
 3. enter docker by `docker run -it zzyo/ubuntu:v1 /bin/bash`
 
 4. enter code folder and run:
+
     `cd home`
     
     `allennlp train FRMiner/config.json -s FRMiner/out/ -f --include-package FRMiner`

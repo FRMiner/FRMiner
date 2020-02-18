@@ -7,9 +7,9 @@ We provide two kinds of installation approaches, docker and configuring manually
 
 1. install docker following by [Docker tutorial](https://docs.docker.com/install/)
 
-2. pull docker image by `docker pull zzyo/ubuntu:v1` in command
+2. pull docker image by `docker pull zzyo/frminer:v1`
 
-3. enter docker by `docker run -it zzyo/ubuntu:v1 /bin/bash`
+3. enter docker by `docker run -it zzyo/frminer:v1 /bin/bash`
 
 4. enter code folder and run:
 
@@ -18,7 +18,8 @@ We provide two kinds of installation approaches, docker and configuring manually
     `allennlp train FRMiner/config.json -s FRMiner/out/ -f --include-package FRMiner`
     
     
-This training process will take a long time which depends on the performance of your machine, if you just want to test the functions of the code or get an initial trained model, you can set the `num_epochs` field in `config.json` as a small integer number.
+This training process will take a long time which depends on the performance of your machine. 
+if you just want to test the functions of the code or get an initial trained model, you can set the `num_epochs` field in `config.json` as a small integer number.
     
     
 ## Configure manually

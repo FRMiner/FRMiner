@@ -29,7 +29,9 @@ If you just want to test the functions of the code or get an initial trained mod
 
    Memory: minimum 8G
    
-   Hardware: minimum 10G
+   Storage: minimum 10G
+   
+   GPU: minimum 8G, eg. Nividia GTX 1060
 
 2. Coding language: Python (v3.6)
 

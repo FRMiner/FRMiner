@@ -37,7 +37,9 @@ If you just want to test the functions of the code or get an initial trained mod
 
 3. CUDA: 9.0
 
-    CUDA is optional, and you can run the code on CPU by specifying the `cuda_device` field in `config.json` as `-1`. 
+    CUDA is optional, and you can run the code on CPU by specifying the `cuda_device` field in `config.json` as `-1`.
+    
+    if you run the code on CPU, you need a larger memory.
 
 4. Python packages:
 
